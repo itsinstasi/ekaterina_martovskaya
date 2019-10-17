@@ -1,2 +1,2 @@
 ﻿User-agent: *
-Sitemap: http://ekaterina-martovskaya.itsinsta.site//sitemap.xml
+Sitemap: https://ekaterina-martovskaya.itsinsta.site//sitemap.xml
