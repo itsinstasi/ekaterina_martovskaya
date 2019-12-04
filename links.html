@@ -353,6 +353,8 @@
 
 					<div class="links-page-list">
 
+
+
 						<a href="http://ekaterinamartovskaya.ru/" class="links-page-btn-pic" style="
 "
 							target="_blank"
@@ -363,6 +365,8 @@
 								</div>
 							</img>
 						</a>
+
+
 
 
 
@@ -380,6 +384,8 @@
 
 
 
+
+
 						<a href="./kurs_provodnik.html" class="links-page-btn-pic" style="
 "
 >
@@ -389,6 +395,8 @@
 								</div>
 							</img>
 						</a>
+
+
 
 
 
@@ -406,9 +414,13 @@
 
 
 
+
+
 						<div class="article__video">
 							<iframe width="560" height="315" src="https://www.youtube.com/embed/WNJ8fKmoYzs?autoplay=1&autohide=1&controls=0&disablekb=1&showinfo=0&rel=0&playsinline=0&" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 						</div>
+
+
 
 
 
@@ -417,6 +429,8 @@
 								<p>Помогаю решить вопросы связанные с отношениями, здоровьем, финансовым потолком, навязчивыми идеями, страхами и пр.<br/>Провожу групповые тренинги по техникам самогипноза.<br/>Обучаю профессии гипнотерапевт по собственной методике.<br/>Основательница онлайн-школы отношений для женщин.</p>
 							</div>
 						</div>
+
+
 
 
 
@@ -430,6 +444,8 @@
 								Мой Telegram канал
 							</strong>
 						</a>
+
+
 
 
 
@@ -478,6 +494,8 @@
 
 
 
+
+
 						<a href="https://www.youtube.com/watch?v=ghPe23jaR50" class="links-page-btn " style="
 " 
 						target="_blank"
@@ -487,6 +505,8 @@
 								Видео отзывы
 							</strong>
 						</a>
+
+
 
 
 
@@ -503,6 +523,8 @@
 
 
 
+
+
 						<a href="https://t.me/martovskaya_ekaterina" class="links-page-btn " style="
 " 
 						target="_blank"
@@ -513,6 +535,8 @@
 								Записаться на консультацию!
 							</strong>
 						</a>
+
+
 
 
 
@@ -529,6 +553,8 @@
 
 
 
+
+
 						<a href="https://www.facebook.com/katerinamartovskaya" class="links-page-btn " style="
 " 
 						target="_blank"
@@ -539,6 +565,8 @@
 								Facebook
 							</strong>
 						</a>
+
+
 
 
 
@@ -555,6 +583,8 @@
 
 
 
+
+
 						<a href="https://vk.com/ekaterina_martovskaya" class="links-page-btn " style="
 " 
 						target="_blank"
@@ -565,6 +595,8 @@
 								ВКонтакте
 							</strong>
 						</a>
+
+
 
 
 
@@ -606,5 +638,44 @@
 	<script src="js/jquery.init.js"></script>
 	<!--my scripts-->
 	<script src="js/jquery.main.js"></script>
+
+    <script type="text/javascript">
+function getFormData($form){
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
+
+    $.map(unindexed_array, function(n, i){
+        indexed_array[n['name']] = n['value'];
+    });
+
+    return indexed_array;
+}
+
+$(document).ready(function(){
+    $('form').submit(function(){
+	event.preventDefault(); //prevent default action 
+
+	var contact = $(this).find('input[name="contact"]').val();
+	if (!contact) return false;
+
+	var post_url = $(this).attr("action"); //get form action url
+	var request_method = $(this).attr("method"); //get form GET/POST method
+	var form_data = JSON.stringify(getFormData($(this)));
+
+	var form = $(this);
+	$.ajax({
+		url : post_url,
+		type: request_method,
+                contentType: 'application/json',
+		data : form_data
+	}).done(function(response){
+	}).fail(function(){
+	});
+
+        return false;
+    });
+});
+    </script>
+
 </body>
 </html>
