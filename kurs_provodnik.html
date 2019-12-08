@@ -378,7 +378,8 @@
 
 
 
-						<div class="links-page-blc">
+						<div class="links-page-blc" style="
+">
 							<div class="links-page-blc__txt">
 								<p>Это то, что ты знаешь, и всегда знал, но не осознавал.<br/>Тебе протрут стёкла чтобы свет проходил и ты видел не грязные капли от дождя, а целый мир который рядом с тобой, видел дальше и ЯРЧЕ.<br/><br/>Личная проработка.<br/>То что тебе мешает пропускать свою энергию.<br/>Базовые знания, которые нужны каждому человеку, чтоб понимать кто он есть.<br/><br/>Стоимость 1 ступени: 36.000₽</p>
 							</div>
@@ -402,7 +403,8 @@
 
 
 
-						<div class="links-page-blc">
+						<div class="links-page-blc" style="
+">
 							<div class="links-page-blc__txt">
 								<p>Это этап когда ты берёшь ответственность на себя.<br/>Когда ты ощущаешь свою способность влиять,<br/>И эффективно применяешь влияние на благо другим.<br/><br/>Стоимость 2 ступени: 73.000₽</p>
 							</div>
@@ -426,7 +428,8 @@
 
 
 
-						<div class="links-page-blc">
+						<div class="links-page-blc" style="
+">
 							<div class="links-page-blc__txt">
 								<p>Знания о пространстве и времени.<br/>Учишься управлять материей, нарушая общепринятые законы.<br/>Взаимодействуешь с Источником напрямую.<br/><br/>Стоимость 3 ступени: 108.000₽</p>
 							</div>
@@ -436,7 +439,8 @@
 
 
 
-						<div class="links-page-blc">
+						<div class="links-page-blc" style="
+">
 							<div class="links-page-blc__txt">
 								<p>*При оплате сразу 3 ступеней курса действует скидка, для оплаты и получения скидки свяжитесь с нами, любым удобным способом.</p>
 							</div>
@@ -535,6 +539,17 @@ $(document).ready(function(){
                 contentType: 'application/json',
 		data : form_data
 	}).done(function(response){
+	    var email = response.email;
+		if (email) {
+	        $("#leadSent").text("Ваш запрос отправлен на " + email);
+		} else {
+	        $("#leadSent").text("Ваш запрос отправлен");
+		}
+
+		var input = form.find('input');
+		input.attr('readonly', true);
+        input.attr("disabled", true);
+		form.find('button').attr("disabled", true);
 	}).fail(function(){
 	});
 
